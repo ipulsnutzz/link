@@ -1,0 +1,16 @@
+-- Fast Attack dengan Toggle On/Off
+_G.FastAttack = true
+
+spawn(function()
+    while _G.FastAttack do
+        pcall(function()
+            local CombatFramework = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework))[2]
+            local CombatFrameworkR = debug.getupvalues(CombatFramework)[2]
+            
+            CombatFrameworkR.activeController.attacking = false
+            CombatFrameworkR.activeController.timeStamps = {}
+            CombatFrameworkR.activeController.increment = 3
+        end)
+        wait()
+    end
+end)
